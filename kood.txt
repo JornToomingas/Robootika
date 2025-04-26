@@ -1,3 +1,7 @@
+//Ülesanne 3
+
+
+
 //TMP sensor
 const int LM35 = A0;
 //Mootor
