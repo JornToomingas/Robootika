@@ -2,7 +2,6 @@
 //Jörn Markus Toomingas
 
 
-
 const int LM35 = A0;
 const int motor = 13;
 const int LedRed = 12;
@@ -41,7 +40,6 @@ void loop() {
   }
   delay(1000);
 }
-
 
 
 //abi: https://www.tinkercad.com/things/lf9NfwlqXl3-temperature-sensor-with-dc-motor-and-lcd-16x2
