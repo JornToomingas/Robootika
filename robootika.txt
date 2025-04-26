@@ -1,0 +1,60 @@
+//TMP sensor
+const int LM35 = A0;
+//Mootor
+const int motor = 13;
+//LED Punane
+const int LedRed = 12;
+//LED Roheline
+const int LedGreen = 11;
+
+void setup() {
+//Seriaalühendus algab
+  Serial.begin(9600);
+//Mootori välund pin
+  pinMode(motor, OUTPUT);
+//Punase LEDi väljund pin
+  pinMode(LedRed, OUTPUT);
+//Rohelise LEDi väljund pin
+  pinMode(LedGreen, OUTPUT);
+//Ootab 2 sekundit
+  delay(2000);
+}
+
+void loop() {
+//Loeb TMP sensori temperatuuri
+  int value = analogRead(LM35);
+//Arvutab temperatuuri celsiuseks
+  float Temperature = value * 500.0 / 1023.0;
+  
+  Serial.print("Temperature: ");
+//Prindib temperatuuri serial monitorile
+  Serial.print(Temperature);
+  Serial.print(" °C  | ");
+
+//Kui temperatuur on üle 50
+  if (Temperature > 50) {
+//Lülitub mootor sisse
+    digitalWrite(motor, HIGH);
+//Lülitub punane LED sisse
+    digitalWrite(LedRed, HIGH);
+    digitalWrite(LedGreen, LOW);
+//Tekst mis ilmub serial monitorile
+    Serial.println("Mootor: SEES  | Ventilaator: SEES");
+  }
+//Kui temperatuur on alla 50
+  else {
+//Mootor on väljas
+    digitalWrite(motor, LOW);
+    digitalWrite(LedRed, LOW);
+//Roheline LED lülitub sisse
+    digitalWrite(LedGreen, HIGH);
+//Tekst mis ilmub serial monitorile
+    Serial.println("Mootor: VÄLJAS  | Ventilaator: VÄLJAS");
+  }
+//Ootab 1 sekund enne uuesti kirjutamist
+  delay(1000);
+}
+
+
+
+//abi: https://www.tinkercad.com/things/lf9NfwlqXl3-temperature-sensor-with-dc-motor-and-lcd-16x2
