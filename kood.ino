@@ -43,3 +43,4 @@ void loop() {
 
 
 //abi: https://www.tinkercad.com/things/lf9NfwlqXl3-temperature-sensor-with-dc-motor-and-lcd-16x2
+//simulatsioon: https://www.tinkercad.com/things/2b8oQl5ISSM-3
